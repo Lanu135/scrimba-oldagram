@@ -28,3 +28,29 @@ const posts = [
   }
 ]
 
+//Loops through the array to append all posts to the DOM
+for (let i = 0; i < posts.length; i++) {
+    appendPostToDom(i)
+    
+}
+
+function appendPostToDom(index) {
+    const newSection = document.body.appendChild(document.createElement("section"))
+    newSection.innerHTML = `
+        <div class="container">
+            <img class="avatar" src="${posts[index].avatar}" alt="Avatar of ${posts[index].name}">
+            <div>
+                <p class="bold without-margin-bottom">${posts[index].name}</p>
+                <p class="without-margin-top">${posts[index].location}</p>
+            </div>
+        </div>
+        <img class="post" src="${posts[index].post}" alt="Painting of ${posts[index].name}">
+        <div class="container-icons">
+            <img id="icon-heart-${index}" class="icon" src="images/icon-heart.png" alt="heart icon">
+            <img id="icon-comment" class="icon" src="images/icon-comment.png" alt="speech bubble item">
+            <img id="icon-dm" class="icon" src="images/icon-dm.png" alt="paper airplane icon">
+            <p class="bold">${posts[index].likes} likes</p>
+            <p class="without-margin-top"><span class="bold">${posts[index].username}</span> ${posts[index].comment}</p>
+        </div>
+    `   
+}
